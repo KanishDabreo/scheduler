@@ -71,3 +71,5 @@ storiesOf("DayListItem", module) //Initiates Storybook and registers our DayList
     .add("Wednesday", () => (
         <DayList days={days} day={"Wednesday"} setDay={action("setDay")} />
     ));
+
+  
