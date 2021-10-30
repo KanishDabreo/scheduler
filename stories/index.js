@@ -11,6 +11,10 @@ import DayList from "components/DayList";
 
 import Header from "components/Appointment/Header.js";
 import Empty from "components/Appointment/Empty.js";
+import Show from "components/Appointment/Show.js";
+import Confirm from "components/Appointment/Confirm.js";
+import Status from "components/Appointment/Status";
+import Error from "components/Appointment/Error";
 
 //Button component
 storiesOf("Button", module)
@@ -146,6 +150,23 @@ storiesOf("Appointment", module)
     backgrounds: [{ name: "white", value: "#fff", default: true }]
   })
   .add("Appointment", () => <Appointment />)
-  .add("Appointment with Time", () => <Appointment time="12pm" />);
+  .add("Appointment with Time", () => <Appointment time="12pm"
+  />);
   .add("Header", () => <Header time="12pm" />)
-  .add("Empty", () => <Empty onAdd={action("onAdd")}/>)
+  .add("Empty", () => <Empty onAdd={action("onAdd")} />)
+  .add("Show", () => <Show
+    student="Lydia Miller-Jones"
+    interviewer={interviewer.name}
+    onEdit={action("onEdit")}
+    onDelete={action("onDelete")}
+  />)
+  .add("Confirm", () => <Confirm
+    message="Delete the appointment?"
+    onConfirm={action("onConfirm")}
+    onCancel={action("onCancel")}
+  />)
+  .add("Status", () => <Status message="Deleting" />)
+  .add("Error", () => <Error
+    message="Could not delete appointment."
+    onClose={action("onClose")}
+  />)
