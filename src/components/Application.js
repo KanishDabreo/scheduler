@@ -1,28 +1,13 @@
 import React from "react";
-import { useState } from "react"; 
+import { useState, useEffect } from "react"; 
+import axios from "axios"; 
 import DayList from "components/DayList.js";
 import "components/Application.scss";
 
 
 export default function Application() {
   const [day, setDay] = useState("Monday");
-  const days = [
-    {
-      id: 1,
-      name: "Monday",
-      spots: 2,
-    },
-    {
-      id: 2,
-      name: "Tuesday",
-      spots: 5,
-    },
-    {
-      id: 3,
-      name: "Wednesday",
-      spots: 0,
-    },
-  ];
+
   return (
     <main className="layout">
       <section className="sidebar">
