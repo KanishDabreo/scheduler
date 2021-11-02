@@ -1,10 +1,12 @@
 import React from "react";
 import classNames from "classnames";
+import PropTypes from "prop-types";
 import InterviewerList from "./InterviewerList.scss";
 import InterviewerListItem from "./InterviewerListItem.js";
 
-export default function InterviewerList(props) {
-  const interviewers = props.interviewer.map((interviewer) => {
+//Try sending a string to the interviewers prop that is now required to be an array (e.g. try the .toString() function). Check the console to find the warning. When you see the error, revert the code and ensure that the prop is an array again.w8d2-2
+function InterviewerList(props) {
+  const interviewers = props.interviewers.map((interviewer) => {
     return (
       <InterviewerListItem
         key={interviewer.id}
@@ -22,3 +24,9 @@ export default function InterviewerList(props) {
     </section>
   )
 }
+
+InterviewerList.propTypes = {
+  interviewers: PropTypes.array.isRequired
+};
+
+export default InterviewerList;
