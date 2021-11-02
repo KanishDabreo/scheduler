@@ -39,7 +39,18 @@ export default function Application(props) {
     );
   });
 //short version <Appointment key={appointment.id} {...appointment} />
-  return (
+
+function bookInterview(id, interview) {
+  console.log(id, interview);
+} 
+
+function save(name, interviewer) {
+  const interview = {
+    student: name,
+    interviewer
+  };
+}
+return (
     <main className="layout">
       <section className="sidebar">
         <img
