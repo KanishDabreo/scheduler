@@ -20,3 +20,10 @@ import Application from "components/Application";
 it("renders without crashing", () => {
   render(<Application />);
 });
+
+//example 
+describe("Appointment", () => {
+  it("renders without crashing", () => {
+    render(<Appointment />);
+  });
+});
