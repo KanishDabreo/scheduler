@@ -3,15 +3,103 @@ import { Fragment } from 'react';
 import Header from "./Header.js";
 import Show from "./Show.js";
 import Empty from "./Empty.js";
+import Confirm from "./Confirm.js";
+import Form from "./Form.js";
+import Error from "./Error.js";
+import Status from "./Status.js";
+import useVisualMode from "hooks/useVisualMode.js";
 import "components/Appointment/styles.scss"
 
 export default function Appointment(props) {
-  return (
-    <Fragment>
-      <header>{props.time}</header>
-      {props.interview ? <article className="appointment">
-        <Show interviewer={props.interview.interviewer.name} student={props.interview.student} /></article>
-        : <article className="appointment"><Empty /></article>}
+  const EMPTY = "EMPTY";
+  const SHOW = "SHOW";
+  const CREATE = "CREATE";
+  const SAVING = "SAVING";
+  const DELETING = "DELETING";
+  const CONFIRM = "CONFIRM";
+  const EDIT = "EDIT";
+  const ERROR_SAVE = "ERROR_SAVE";
+  const ERROR_DELETE = "ERROR_DELETE";
+
+  const { mode, transition, back } = useVisualMode(
+    props.interview ? SHOW : EMPTY
+  );
+  //SAVE
+  function save(name, interviewer) {
+    const interview = {
+      student: name,
+      interviewer
+    };
+  
+    transition(SAVING);
+  
+    props
+      .bookInterview(props.id, interview)
+      .then(() => transition(SHOW))
+      .catch(error => transition(ERROR_SAVE, true));
+  }
+
+  //DELETE
+  function destroy(event) {
+    transition(DELETING, true);
+    props
+     .cancelInterview(props.id)
+     .then(() => transition(EMPTY))
+     .catch(error => transition(ERROR_DELETE, true));
+   }
+    function confirm() {
+      transition(CONFIRM);
+    }
+    
+  //EDIT  
+  function editInterview() {
+    transition(EDIT);
+  }
+
+    return (
+      <Fragment className="appointment">
+      {props.time ? <Header time={props.time} /> : <p>No Appointments</p>}
+      {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
+      {mode === SHOW && (
+        <Show
+          student={props.interview.student}
+          interviewer={props.interview.interviewer}
+          onEdit={edit}
+          onDelete={confirm}
+        />
+      )}
+      {mode === CREATE && (
+        <Form
+          interviewers={props.interviewers}
+          onSave={save}
+          onCancel={() => back()} />
+      )}
+      {mode === EDIT && (
+        <Form
+          student={props.interview.student}
+          interviewer={props.interview.interviewer.id}
+          interviewers={props.interviewers}
+          onSave={save}
+          onCancel={() => back()} />
+      )}
+      {mode === SAVING && <Status message="Saving" />}
+      {mode === CONFIRM && (
+        <Confirm 
+          message="Delete the appointment?"
+          onConfirm={deleteInterview} 
+          onCancel={() => back()}
+        />)}
+      {mode === DELETING && <Status message="Deleting" />}
+      {mode === ERROR_SAVE && (
+        <Error
+          message="Could not add appointment"
+          onClose={() => back()}
+        />)}
+      {mode === ERROR_DELETE && (
+        <Error
+          message="Could not cancel appointment"
+          onClose={() => back()}
+        />)}
     </Fragment>
   )
 }
