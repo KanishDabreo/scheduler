@@ -27,9 +27,21 @@ const state = {
       time: "4pm",
       interview: { student: "Chad Takahashi", interviewer: 2 }
     }
+  },
+  interviewers: {
+    "1": {
+      "id": 1,
+      "name": "Sylvia Palmer",
+      "avatar": "https://i.imgur.com/LpaY82x.png"
+    },
+    "2": {
+      id: 2,
+      name: "Tori Malcolm",
+      avatar: "https://i.imgur.com/Nmx0Qxo.png"
+    }
   }
 };
-
+//getAppointmentsForDay Tests
 test("getAppointmentsForDay returns an array", () => {
   const result = getAppointmentsForDay(state, "Monday");
   expect(Array.isArray(result)).toBe(true);
@@ -55,7 +67,7 @@ test("getAppointmentsForDay returns an empty array when the day is not found", (
   const result = getAppointmentsForDay(state, "Wednesday");
   expect(result.length).toEqual(0);
 });
-
+//getInterviewersForDay Tests
 test("getInterviewersForDay returns an array", () => {
   const result = getInterviewersForDay(state, "Monday");
   expect(Array.isArray(result)).toBe(true);
@@ -81,7 +93,7 @@ test("getInterviewersForDay returns an empty array when the day is not found", (
   const result = getInterviewersForDay(state, "Wednesday");
   expect(result.length).toEqual(0);
 });
-
+//getInterview Tests
 test("getInterview returns an object with the interviewer data", () => {
   const result = getInterview(state, state.appointments["3"].interview);
   expect(result).toEqual(
