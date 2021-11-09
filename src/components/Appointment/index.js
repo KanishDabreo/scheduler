@@ -1,12 +1,12 @@
 import React from "react";
-import { Fragment } from 'react';
-import Header from "./Header.js";
-import Show from "./Show.js";
-import Empty from "./Empty.js";
-import Confirm from "./Confirm.js";
-import Form from "./Form.js";
-import Error from "./Error.js";
-import Status from "./Status.js";
+import { Fragment, useEffect } from 'react';
+import Header from "./Header";
+import Empty from "./Empty";
+import Show from "./Show";
+import Form from "./Form";
+import Status from "./Status";
+import Confirm from "./Confirm";
+import Error from "./Error";
 import useVisualMode from "hooks/useVisualMode.js";
 import "components/Appointment/styles.scss"
 
@@ -15,11 +15,11 @@ export default function Appointment(props) {
   const SHOW = "SHOW";
   const CREATE = "CREATE";
   const SAVING = "SAVING";
-  const DELETING = "DELETING";
   const CONFIRM = "CONFIRM";
+  const DELETING = "DELETING";
   const EDIT = "EDIT";
   const ERROR_SAVE = "ERROR_SAVE";
-  const ERROR_DELETE = "ERROR_DELETE";
+  const ERROR_DELETE = "ERROR_DELETE"
 
   const { mode, transition, back } = useVisualMode(
     props.interview ? SHOW : EMPTY
@@ -30,9 +30,7 @@ export default function Appointment(props) {
       student: name,
       interviewer
     };
-  
     transition(SAVING);
-  
     props
       .bookInterview(props.id, interview)
       .then(() => transition(SHOW))
@@ -40,7 +38,7 @@ export default function Appointment(props) {
   }
 
   //DELETE
-  function destroy(event) {
+  function deleteInterview(event) {
     transition(DELETING, true);
     props
      .cancelInterview(props.id)
@@ -52,7 +50,7 @@ export default function Appointment(props) {
     }
     
   //EDIT  
-  function editInterview() {
+  function edit() {
     transition(EDIT);
   }
 

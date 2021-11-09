@@ -11,7 +11,7 @@ export default function useApplicationData() {
   })
   
   const setDay = day => setState(prev => ({ ...prev, day }));
-  
+  // retrieve data with axios get requests
   useEffect(() => {
     Promise.all([
       axios.get("/api/days"),
@@ -21,7 +21,6 @@ export default function useApplicationData() {
       setState(prev => ({ ...prev, days: all[0].data, appointments: all[1].data, interviewers: all[2].data }));
     });
   }, []);
-
 
   function bookInterview(id, interview) {
     const appointment = {

@@ -1,6 +1,6 @@
 import React from "react";
 import classNames from "classnames";
-import InterviewerListItem from "./InterviewerListItem.scss";
+import "components/InterviewerListItem.scss";
 
 export default function InterviewerListItem(props) {
   const { name, avatar, selected, setInterviewer } = props;
@@ -14,7 +14,7 @@ export default function InterviewerListItem(props) {
         src={avatar}
         alt={name}
       />
-      Sylvia Palmer
+      {selected && name}
     </li>
   )
 }
