@@ -1,6 +1,8 @@
 import React from "react";
 
-import { render, cleanup, fireEvent } from "@testing-library/react";
+import { fireEvent } from "@testing-library/react";
+
+import { render, cleanup } from "@testing-library/react";
 
 import Form from "components/Appointment/Form";
 
@@ -24,14 +26,13 @@ describe("Form", () => {
 
   it("renders with initial student name", () => {
     const { getByTestId } = render(
-      <Form interviewers={interviewers} student="Lydia Miller-Jones" />
+      <Form interviewers={interviewers} name="Lydia Miller-Jones" />
     );
     expect(getByTestId("student-name-input")).toHaveValue("Lydia Miller-Jones");
   });
 
   it("validates that the student name is not blank", () => {
     const onSave = jest.fn();
-
     const { getByText } = render(
       <Form interviewers={interviewers} onSave={onSave} />
     );
@@ -70,7 +71,7 @@ describe("Form", () => {
     const { getByText, getByPlaceholderText, queryByText } = render(
       <Form
         interviewers={interviewers}
-        student="Lydia Mill-Jones"
+        name="Lydia Mill-Jones"
         onSave={jest.fn()}
         onCancel={onCancel}
       />
