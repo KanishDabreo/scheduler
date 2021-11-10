@@ -11,6 +11,7 @@ function InterviewerList(props) {
       key={interviewer.id}
       name={interviewer.name}
       spots={interviewer.spots}
+      avatar={interviewer.avatar}
       selected={interviewer.id === value}
       setInterviewer={() => onChange(interviewer.id)} />
   )
