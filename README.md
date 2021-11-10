@@ -8,10 +8,11 @@ Back-end: Node, Express, SQL
 Tests: jest, Storybook, Cypress
 
 ## Final Product
-!["  "](http://)
-!["  "](http://)
-!["  "](http://)
-!["  "](http://)
+!["Main appointment form view"](https://github.com/KanishDabreo/scheduler/blob/master/docs/appointment-form.png?raw=true)
+!["Avilable appointments"](https://github.com/KanishDabreo/scheduler/blob/master/docs/available-appointment.png?raw=true)
+!["Highlighted selected day"](https://github.com/KanishDabreo/scheduler/blob/master/docs/day-selection.png?raw=true)
+!["Delete appointment confirmation"](https://github.com/KanishDabreo/scheduler/blob/master/docs/delete-appointment.png?raw=true)
+!["Edit appointment view"](https://github.com/KanishDabreo/scheduler/blob/master/docs/edit-appointment.png?raw=true)
 
 ## Setup
 1. Fork this repository, then clone your fork of this repository.
