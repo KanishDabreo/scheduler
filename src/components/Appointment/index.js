@@ -1,5 +1,4 @@
 import React from "react";
-import { Fragment, useEffect } from 'react';
 import Header from "./Header";
 import Empty from "./Empty";
 import Show from "./Show";
@@ -55,7 +54,7 @@ export default function Appointment(props) {
   }
 
     return (
-      <Fragment className="appointment">
+      <article className="appointment">
       {props.time ? <Header time={props.time} /> : <p>No Appointments</p>}
       {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
       {mode === SHOW && (
@@ -75,7 +74,7 @@ export default function Appointment(props) {
       {mode === EDIT && (
         <Form
           student={props.interview.student}
-          interviewer={props.interview.interviewer.id}
+          interviewer={props.interview.interviewer}
           interviewers={props.interviewers}
           onSave={save}
           onCancel={() => back()} />
@@ -98,6 +97,6 @@ export default function Appointment(props) {
           message="Could not cancel appointment"
           onClose={() => back()}
         />)}
-    </Fragment>
+    </article>
   )
 }
