@@ -9,7 +9,8 @@ export default function DayListItem(props) {
     "day-list__item--selected": selected,
     "day-list__item--full": spots === 0,
   });
-
+  
+// indicates the amount of slots remaining to the user
   function formatSpots() {
     let spotsRemaining;
     spotsRemaining = `${spots} spots`
