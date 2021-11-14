@@ -12,14 +12,30 @@ export default function Form(props) {
     setStudent("");
   }
 
+// cancel appointment
   const cancel = function () {
     reset();
     props.onCancel();
   }
 
+// const validateStudentExists = function () {
+//   if (student === "") {
+//     setError("Student name cannot be blank");
+//     return;
+//   }
+// }
+
+//validate booking with student name & interviewer on form
   const validate = function () {
     if (student === "") {
+      //error msg
       setError("Student name cannot be blank");
+      return;
+    }
+    // validateStudentExists();
+    if (interviewer === null) {
+      ////error msg
+      setError("Select an interviewer");
       return;
     }
     setError("");

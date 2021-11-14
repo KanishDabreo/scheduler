@@ -12,11 +12,11 @@ export default function DayListItem(props) {
 
   function formatSpots() {
     let spotsRemaining;
-    spotsRemaining = `${spots} spots remaining`
+    spotsRemaining = `${spots} spots`
     if (spots === 0) {
-      spotsRemaining = "no spots remaining";
+      spotsRemaining = "no spots";
     } if (spots === 1) {
-      spotsRemaining = "1 spot remaining";
+      spotsRemaining = "1 spot";
     }
     return spotsRemaining;
   }
