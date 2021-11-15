@@ -1,6 +1,7 @@
 import React from "react";
 //Status informs the user that an operation is in progress
 export default function Status(props) {
+ console.log(props);
   return (
     <main className="appointment__card appointment__card--status">
       <img
@@ -8,7 +9,7 @@ export default function Status(props) {
         src="images/status.png"
         alt="Loading"
       />
-      <h1 className="text--semi-bold">{props.messsage}</h1>
+      <h1 className="text--semi-bold">{props.message}</h1>
     </main>
   )
 }

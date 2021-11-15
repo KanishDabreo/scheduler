@@ -86,7 +86,7 @@ export default function Appointment(props) {
           onCancel={() => back()} />
       )}
       {mode === SAVING && (
-      <Status message="Saving" />
+      <Status message="Saving"/>
       )}
       {mode === CONFIRM && (
         <Confirm 
