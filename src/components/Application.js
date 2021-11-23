@@ -15,7 +15,8 @@ export default function Application(props) {
   } = useApplicationData();
 
   const interviewers = getInterviewersForDay(state, state.day);
-
+  
+  //create appointment components
   const appointments = getAppointmentsForDay(state, state.day).map(
     appointment => {
       return (
@@ -30,7 +31,7 @@ export default function Application(props) {
       );
     }
   );
-  
+  //Render component with props
   return (
     <main className="layout">
       <section className="sidebar">

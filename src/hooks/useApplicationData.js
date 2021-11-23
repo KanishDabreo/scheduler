@@ -11,7 +11,7 @@ export default function useApplicationData() {
   })
   
   const setDay = day => setState(prev => ({ ...prev, day }));
-  // retrieve data with axios get requests
+  // retrieve data with axios get requests to set up an initial state
   useEffect(() => {
     Promise.all([
       axios.get("/api/days"),
@@ -23,6 +23,7 @@ export default function useApplicationData() {
     });
   }, []);
 
+  // function to create new interview state make the put/axios request
   function bookInterview(id, interview) {
     const appointment = {
       ...state.appointments[id],
@@ -48,6 +49,7 @@ export default function useApplicationData() {
       });
   }
 
+  // function to delete interview state
   function cancelInterview(id) {
     const appointment = {
       ...state.appointments[id],
