@@ -18,13 +18,6 @@ export default function Form(props) {
     props.onCancel();
   }
 
-// const validateStudentExists = function () {
-//   if (student === "") {
-//     setError("Student name cannot be blank");
-//     return;
-//   }
-// }
-
 //validate booking with student name & interviewer on form
   const validate = function () {
     if (student === "") {
