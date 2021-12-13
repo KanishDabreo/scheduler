@@ -34,7 +34,7 @@ export default function Form(props) {
     }
     // validateStudentExists();
     if (interviewer === null) {
-      ////error msg
+      //error msg
       setError("Select an interviewer");
       return;
     }
@@ -59,7 +59,7 @@ export default function Form(props) {
         </form>
         <InterviewerList
           interviewers={props.interviewers}
-          value={interviewer.id}
+          value={interviewer}
           onChange={setInterviewer}
         />
       </section>
