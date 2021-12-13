@@ -17,7 +17,7 @@ export default function Form(props) {
     reset();
     props.onCancel();
   }
-
+  
 //validate booking with student name & interviewer on form
   const validate = function () {
     if (student === "") {
